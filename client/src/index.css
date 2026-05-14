@@ -1,8 +1,19 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-brand-navy: #0a0e27;
-  --color-brand-accent: #4f8ef7;
+  --color-bg-primary: #020617;
+  --color-bg-secondary: #0f172a;
+  --color-bg-card: #0f172a;
+  --color-accent-blue: #2E7CF6;
+  --color-accent-cyan: #3BB2B8;
+  --color-accent-green: #42E695;
+  --color-accent-purple: #7b5cf0;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #94A3B8;
+  --color-success: #42E695;
+  --color-warning: #ffb347;
+  --color-danger: #ff4757;
+  --color-border-glow: rgba(46, 124, 246, 0.2);
 }
 
 html {
@@ -10,8 +21,31 @@ html {
 }
 
 body {
-  background-color: var(--color-brand-navy);
-  color: white;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   margin: 0;
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.glass-card {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border-glow);
+}
+
+.glass-card:hover {
+  box-shadow: 0 0 15px rgba(79, 142, 247, 0.1);
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
 }

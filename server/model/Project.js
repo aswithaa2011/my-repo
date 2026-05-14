@@ -3,40 +3,55 @@ import mongoose from 'mongoose';
 const projectSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   description: {
     type: String,
-    required: true,
+    required: true
   },
   category: {
     type: String,
-    enum: ['Web', 'Mobile', 'Cloud', 'AI/ML', 'DevOps'],
-    required: true,
+    enum: ['SRE', 'DevOps', 'Cloud', 'Monitoring', 'Automation', 'Security'],
+    required: true
   },
   techStack: {
     type: [String],
-    default: [],
+    default: []
   },
   status: {
     type: String,
-    enum: ['Ongoing', 'Completed', 'On Hold'],
-    default: 'Ongoing',
+    enum: ['Planning', 'Ongoing', 'Completed', 'On Hold'],
+    default: 'Planning'
   },
   clientName: {
-    type: String,
-    default: '',
+    type: String
   },
   imageUrl: {
+    type: String
+  },
+  priority: {
     type: String,
-    default: '',
+    enum: ['Low', 'Medium', 'High', 'Critical'],
+    default: 'Medium'
+  },
+  startDate: {
+    type: Date
+  },
+  endDate: {
+    type: Date
+  },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
+  updatedAt: {
+    type: Date
+  }
 });
 
 const Project = mongoose.model('Project', projectSchema);
-
 export default Project;
